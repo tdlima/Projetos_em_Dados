@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC #SQL Para Engenharia de Dados
 # MAGIC
-# MAGIC ##Criação do Banco de Dados
+# MAGIC ## Criação do Banco de Dados
 
 # COMMAND ----------
 
@@ -12,9 +12,9 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Carregamento da Base de Dados
+# MAGIC ## Carregamento da Base de Dados
 # MAGIC
-# MAGIC ###Carregando arquivo CSV com a tabela Orders e realizando criação do dataframe com o Spark.
+# MAGIC ### Carregando arquivo CSV com a tabela Orders(Vendas) e realizando criação do dataframe com o Spark.
 
 # COMMAND ----------
 
@@ -24,7 +24,7 @@ df_orders.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Salvando a estrutura de tabela no Database
+# MAGIC ## Salvando a estrutura de tabela no Database
 
 # COMMAND ----------
 
@@ -33,7 +33,7 @@ df_orders.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Realizando o mesmo processo com a tabela Stores
+# MAGIC ## Realizando o mesmo processo com a tabela Stores(Lojas)
 
 # COMMAND ----------
 
@@ -48,13 +48,11 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 
 # MAGIC %md
 # MAGIC #Trabalhando com SQL
-# MAGIC
-# MAGIC ##SELECT, WHERE, DISTINCT, JOIN E LIMIT
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Realizando consultas no Database
+# MAGIC ## Realizando consultas no Database
 
 # COMMAND ----------
 
@@ -69,9 +67,9 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Filtrando a Consulta
+# MAGIC ## Filtrando a Consulta
 # MAGIC
-# MAGIC ###Buscando registro pelo Status 'FINISHED'
+# MAGIC ### Buscando registro pelo Status 'FINISHED'
 
 # COMMAND ----------
 
@@ -86,7 +84,7 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ###Verificando todos os valores em 'store_segment'
+# MAGIC ### Verificando todos os valores em 'store_segment'
 
 # COMMAND ----------
 
@@ -96,7 +94,7 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ###Limitando a quantidade de registros na busca
+# MAGIC ### Limitando a quantidade de registros na busca
 
 # COMMAND ----------
 
@@ -111,9 +109,9 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Unindo tabelas para análise
+# MAGIC ## Unindo tabelas para análise
 # MAGIC
-# MAGIC ###Consultando o Identificador e o Amount em Orders, verificando junto o Store Name e ordenando pelo Amout de forma decrescente
+# MAGIC ### Consultando o Identificador e o Amount em Orders, verificando junto o Store Name e ordenando pelo Amout de forma decrescente
 
 # COMMAND ----------
 
@@ -134,9 +132,9 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Análise de Custos
+# MAGIC ## Análise de Custos
 # MAGIC
-# MAGIC ###Cálculando a taxa e o custo das entregas para saber o valor total dos custos
+# MAGIC ### Cálculando a taxa e o custo das entregas para saber o valor total dos custos
 
 # COMMAND ----------
 
@@ -158,7 +156,7 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ###Obtendo a soma total das vendas de determinada loja
+# MAGIC ### Obtendo a soma total das vendas de determinada loja
 
 # COMMAND ----------
 
@@ -176,7 +174,7 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Contando a quantidade de lojas
+# MAGIC ## Contando a quantidade de lojas
 
 # COMMAND ----------
 
@@ -191,7 +189,7 @@ df_stores.write.format("delta").mode("append").saveAsTable("bronze.stores")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Criando um novo dataframe para simulação de dados duplicados
+# MAGIC ## Criando um novo dataframe para simulação de dados duplicados
 
 # COMMAND ----------
 
@@ -201,7 +199,7 @@ display(orders2)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Duplicando os dados no database
+# MAGIC ## Duplicando os dados no database
 
 # COMMAND ----------
 
@@ -215,7 +213,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Retornando registros duplicados
+# MAGIC ## Retornando registros duplicados
 
 # COMMAND ----------
 
@@ -225,7 +223,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Contagem geral de registros duplicados
+# MAGIC ## Contagem geral de registros duplicados
 
 # COMMAND ----------
 
@@ -240,9 +238,9 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Resolvendo o problema de duplicidade dos dados
+# MAGIC ## Resolvendo o problema de duplicidade dos dados
 # MAGIC
-# MAGIC ###Sera criado um novo database que recebera os dados limpos e, em seguida, sera realizado o processo de limpeza dos dados e a ingestão desses dados no novo database
+# MAGIC ### Sera criado um novo database que recebera os dados limpos e, em seguida, sera realizado o processo de limpeza dos dados e a ingestão desses dados no novo database
 
 # COMMAND ----------
 
@@ -267,7 +265,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Detectando Anomalias como valores negativos ou grandes demais
+# MAGIC ## Detectando Anomalias como valores negativos ou grandes demais
 
 # COMMAND ----------
 
@@ -294,7 +292,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Manipulação de Dados
+# MAGIC ## Manipulação de Dados
 # MAGIC
 # MAGIC ###
 
@@ -306,7 +304,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ###Channel_id não possui nenhuma informaçao que faça referencia aos canais. Vamos acrescentar uma coluna com essa informação
+# MAGIC ### Channel_id não possui nenhuma informaçao que faça referencia aos canais. Vamos acrescentar uma coluna com essa informação
 
 # COMMAND ----------
 
@@ -330,9 +328,9 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Manipulando tipos de dados
+# MAGIC ## Manipulando tipos de dados
 # MAGIC
-# MAGIC ###Convertendo o Order Amount em Float
+# MAGIC ### Convertendo o Order Amount em Float
 
 # COMMAND ----------
 
@@ -357,7 +355,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Formatando datas
+# MAGIC ##F ormatando datas
 
 # COMMAND ----------
 
@@ -388,7 +386,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Tratando dados ausentes
+# MAGIC ## Tratando dados ausentes
 
 # COMMAND ----------
 
@@ -415,7 +413,7 @@ orders2.write.format("delta").mode("append").saveAsTable("bronze.orders")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ##Criando nova tabela com dados tratados
+# MAGIC ## Criando nova tabela com dados tratados
 
 # COMMAND ----------
 
