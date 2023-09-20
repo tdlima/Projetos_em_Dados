@@ -26,3 +26,5 @@ Com esse contexto, o grande desafio é a aplicação de conhecimentos tecnicos e
 * _**Databricks**_
 * _**Spark**_
 * _**SQL**_
+
+**Obs:** Devido ao tamanho do dataset, não foi possível fazer o upload para o repositório. Você pode encontra-lo nesse [link](https://www.kaggle.com/datasets/nosbielcs/brazilian-delivery-center)
